@@ -1,0 +1,27 @@
+[
+  {
+    "name": "Helvellyn",
+    "category": "Wainwright",
+    "lat": 54.5233,
+    "lon": -2.9036,
+    "elevation": 950,
+    "notes": "A popular Lake District fell."
+  },
+  {
+    "name": "Scafell Pike",
+    "category": "Wainwright",
+    "lat": 54.4540,
+    "lon": -3.2110,
+    "elevation": 978,
+    "notes": "Highest mountain in England."
+  },
+  {
+    "name": "Cat Bells",
+    "category": "Wainwright",
+    "lat": 54.4308,
+    "lon": -3.1167,
+    "elevation": 451,
+    "notes": "Great views for a short walk."
+  }
+]
+
