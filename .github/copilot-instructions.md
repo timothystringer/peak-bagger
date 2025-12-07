@@ -1,3 +1,64 @@
+# Peak Bagger - Copilot Instructions
+
+## About This Application
+
+Peak Bagger is a Laravel application for tracking mountain peak climbing achievements. Users can browse peaks, record their ascents with dates and notes, and upload photos of their climbs.
+
+### Core Domain Models
+
+**Peak**
+- Represents a mountain peak with name, category, location (lat/lon), elevation, and notes
+- Has many Ascents
+- Supports search by name or category using the `scopeSearch` query scope
+- Supports filtering by exact category using the `scopeFilterCategory` query scope
+
+**Ascent**
+- Records when a user climbed a specific peak
+- Belongs to a User and a Peak
+- Contains: date, notes, and uploaded pictures via Spatie Media Library
+- Pictures are stored on S3 and support thumbnail (300x300) and preview (1200px) conversions
+- Uses queued media conversions for image processing
+
+**User**
+- Standard Laravel authentication with Fortify
+- Supports two-factor authentication
+- Has an `initials()` helper method that returns up to 2 initials from the user's name
+
+### Key Features
+
+1. **Peak Browsing & Search** - Users can view and search peaks by name or category
+2. **Ascent Tracking** - Users can record when they climbed a peak with date and notes
+3. **Photo Uploads** - Users can attach multiple photos to their ascents
+4. **User Authentication** - Registration, login, password reset via Fortify
+5. **Two-Factor Authentication** - Optional 2FA for enhanced security
+6. **User Settings** - Profile, password, appearance, and 2FA management
+
+### Application Architecture
+
+- **Frontend**: Livewire 3 with Volt (functional components), Flux UI components, Tailwind CSS v4
+- **Backend**: Laravel 12, PHP 8.4
+- **Storage**: S3 for media files (via Spatie Media Library)
+- **Testing**: Pest v4 for all tests
+- **Code Style**: Laravel Pint with project-specific rules
+
+### Route Structure
+
+- `/` - Welcome/landing page
+- `/dashboard` - User dashboard (requires auth)
+- `/peaks` - List all peaks (requires auth)
+- `/peaks/{peak}` - View peak details and ascents (requires auth)
+- `/peaks/{peak}/ascents` - Create ascent (POST, requires auth)
+- `/settings/*` - User settings pages (Volt components)
+
+### Important Conventions
+
+1. **Query Scopes**: Use existing scopes like `Peak::search($term)` and `Peak::filterCategory($category)` for filtering
+2. **Media Collections**: Ascents use 'pictures' collection for uploaded images
+3. **Validation**: Use array-based validation rules (e.g., `['required', 'date']`), not pipe-separated strings
+4. **Volt Components**: Check existing components to determine if functional or class-based style is used
+
+---
+
 <laravel-boost-guidelines>
 === foundation rules ===
 
