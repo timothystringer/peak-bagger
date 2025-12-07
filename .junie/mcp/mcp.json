@@ -1,0 +1,20 @@
+{
+    "mcpServers": {
+        "laravel-boost": {
+            "command": "/Users/tim/Library/Application Support/Herd/bin/php84",
+            "args": [
+                "/Users/tim/Documents/Sites/PeakBagger/artisan",
+                "boost:mcp"
+            ]
+        },
+        "herd": {
+            "command": "/Users/tim/Library/Application Support/Herd/bin/php84",
+            "args": [
+                "/Applications/Herd.app/Contents/Resources/herd-mcp.phar"
+            ],
+            "env": {
+                "SITE_PATH": "/Users/tim/Documents/Sites/PeakBagger"
+            }
+        }
+    }
+}

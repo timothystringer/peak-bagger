@@ -14,6 +14,7 @@
             <flux:navlist variant="outline">
                 <flux:navlist.group :heading="__('Platform')" class="grid">
                     <flux:navlist.item icon="home" :href="route('dashboard')" :current="request()->routeIs('dashboard')" wire:navigate>{{ __('Dashboard') }}</flux:navlist.item>
+                    <flux:navlist.item icon="map" :href="route('peaks.index')" :current="request()->routeIs('peaks*')" wire:navigate>{{ __('Peaks') }}</flux:navlist.item>
                 </flux:navlist.group>
             </flux:navlist>
 
@@ -129,5 +130,7 @@
         {{ $slot }}
 
         @fluxScripts
+        {{-- Render pushed scripts (e.g. inline page scripts) --}}
+        @stack('scripts')
     </body>
 </html>

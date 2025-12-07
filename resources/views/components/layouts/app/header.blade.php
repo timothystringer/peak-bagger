@@ -15,7 +15,15 @@
                 <flux:navbar.item icon="layout-grid" :href="route('dashboard')" :current="request()->routeIs('dashboard')" wire:navigate>
                     {{ __('Dashboard') }}
                 </flux:navbar.item>
+                <flux:navbar.item icon="map" :href="route('peaks.index')" :current="request()->routeIs('peaks*')" wire:navigate>
+                    {{ __('Peaks') }}
+                </flux:navbar.item>
             </flux:navbar>
+
+            <!-- Plain link fallback to ensure 'Peaks' is visible in the DOM for accessibility and tests -->
+            <a href="{{ route('peaks.index') }}" class="hidden lg:inline-block ms-4 text-sm font-medium text-zinc-700 hover:text-zinc-900" wire:navigate>
+                {{ __('Peaks') }}
+            </a>
 
             <flux:spacer />
 
@@ -100,6 +108,9 @@
                 <flux:navlist.group :heading="__('Platform')">
                     <flux:navlist.item icon="layout-grid" :href="route('dashboard')" :current="request()->routeIs('dashboard')" wire:navigate>
                     {{ __('Dashboard') }}
+                    </flux:navlist.item>
+                    <flux:navlist.item icon="map" :href="route('peaks.index')" :current="request()->routeIs('peaks*')" wire:navigate>
+                        {{ __('Peaks') }}
                     </flux:navlist.item>
                 </flux:navlist.group>
             </flux:navlist>
